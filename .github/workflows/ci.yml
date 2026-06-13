@@ -11,8 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout mobile repo
         uses: actions/checkout@v4
+        with:
+          path: guildpass-mobile
+
+      - name: Checkout core SDK repo
+        uses: actions/checkout@v4
+        with:
+          repository: Adamantine-Guild/guildpass-sdk # Ensure this is the correct org/repo path
+          path: guildpass-sdk
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -25,13 +33,17 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
+        working-directory: guildpass-mobile
         run: pnpm install
 
       - name: Run linting
+        working-directory: guildpass-mobile
         run: pnpm lint
 
       - name: Run typecheck
+        working-directory: guildpass-mobile
         run: pnpm typecheck
 
       - name: Run tests
+        working-directory: guildpass-mobile
         run: pnpm test:run
