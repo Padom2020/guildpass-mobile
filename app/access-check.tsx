@@ -110,6 +110,8 @@ export default function AccessCheck() {
               onChangeText={setGuildId}
               placeholder="e.g. alpha-guild"
               className="bg-white border border-border rounded-xl p-4 text-text text-lg"
+              accessibilityLabel="Guild ID"
+              accessibilityHint="Enter the guild identifier"
             />
           </View>
 
@@ -120,6 +122,8 @@ export default function AccessCheck() {
               onChangeText={setResourceId}
               placeholder="e.g. secret-channel"
               className="bg-white border border-border rounded-xl p-4 text-text text-lg"
+              accessibilityLabel="Resource ID"
+              accessibilityHint="Enter the resource identifier"
             />
           </View>
 
@@ -173,7 +177,7 @@ export default function AccessCheck() {
         )}
 
         {error && (
-          <Card className="border-error bg-error/5">
+          <Card className="border-error bg-error/5" accessibilityRole="alert" accessibilityLabel="Error checking access. Please verify your inputs and try again.">
             <Text className="text-error font-bold">Error checking access</Text>
             <Text className="text-error/80 text-sm mt-1">
               Please verify your inputs and try again.
