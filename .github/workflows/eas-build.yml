@@ -46,6 +46,17 @@ jobs:
           cd "${{ github.workspace }}/../guildpass-sdk"
           git apply "${{ github.workspace }}/patches/guildpass-sdk.patch"
 
+      - name: Debug
+        run: |
+          echo "=== WORKSPACE ==="
+          echo "${{ github.workspace }}"
+          echo "=== PWD ==="
+          pwd
+          echo "=== LS ==="
+          ls -la
+          echo "=== SDK package.json ==="
+          head -25 "${{ github.workspace }}/../guildpass-sdk/package.json"
+
       - name: Install dependencies
         run: pnpm install
 
